@@ -14,8 +14,10 @@ html
           a href="/t/#{thread.id}" #{thread.title} &mdash; #{thread.author} &mdash; #{thread.posted}
     form method="POST"
       div
+        | Title
         input type="text" name="title"
       div
+        | Author
         input type="text" name="author"
       div
         textarea rows=25 cols=80 name="contents"
