@@ -20,12 +20,20 @@ module GBoard
     post '/b/:board' do |name|
       author = params[:author]
       board = Models::Board.find(name: name)
-      thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents], author: (author != "" || nil) && author)
+      if author != ""
+        thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents], author: author)
+      else
+        thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents])
+      end
       redirect "/t/#{thread.id}"
     end
     post '/t/:thread' do |thread|
       author = params[:author]
-      Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: (author != "" || nil) && author)
+      if author != ""
+        Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: author)
+      else
+        Models::Post.create(thread_id: thread.to_i, contents: params[:contents], )
+      end
       redirect "/t/#{thread}"
     end
     post '/del/t/:thread' do |thread|
