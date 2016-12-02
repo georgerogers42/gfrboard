@@ -10,6 +10,8 @@ html
         li
           a href="/t/#{thread.id}" #{thread.title} &mdash; #{thread.posted}
     form method="POST"
-      input type="text" name="title"
-      textarea name="contents"
+      div
+        input type="text" name="title"
+      div
+        textarea rows=25 cols=80 name="contents"
       input type="submit"

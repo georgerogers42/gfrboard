@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'slim'
 gem 'sequel'
 gem 'pg'
-gem 'sanitize'
+gem 'redcarpet'
 
 platform :mri do
   gem 'thin'

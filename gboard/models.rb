@@ -13,9 +13,15 @@ module GBoard
     class Thread < Sequel::Model
       many_to_one :board
       one_to_many :posts
+      def md_contents
+        MD.render contents
+      end
     end
     class Post < Sequel::Model
       many_to_one :thread
+      def md_contents
+        MD.render contents
+      end
     end
   end
 end
