@@ -18,13 +18,14 @@ module GBoard
       slim :thread
     end
     post '/b/:board' do |name|
+      author = params[:author]
       board = Models::Board.find(name: name)
-      thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents], author: params[:author])
+      thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents], author: (author != "" || nil) && author)
       redirect "/t/#{thread.id}"
     end
     post '/t/:thread' do |thread|
       author = params[:author]
-      Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: author != "" && author)
+      Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: (author != "" || nil) && author)
       redirect "/t/#{thread}"
     end
     post '/del/t/:thread' do |thread|
