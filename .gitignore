@@ -1,0 +1,8 @@
+doc/
+pkg/
+tmp/
+.yardoc/
+._*
+.DS_Store
+*~
+*#*

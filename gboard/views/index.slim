@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title Hello World
+  body
+    ul
+      - @boards.each do |board|
+        li
+          a href="/b/#{board.name}"= board.name

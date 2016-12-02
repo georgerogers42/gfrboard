@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Hello World
+  body
+    h1
+      a href="/b/#{@thread.board.name}" ..
+    div
+      h1= @thread.title
+      h2= @thread.posted
+      pre= @thread.contents
+    - @thread.posts.sort_by(&:posted).each do |post|
+      div
+        h2= post.posted
+        pre= post.contents
+    form method="POST"
+      textarea name="contents"
+      input type="submit"
