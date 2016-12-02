@@ -19,7 +19,7 @@ module GBoard
     end
     post '/b/:board' do |name|
       board = Models::Board.find(name: name)
-      thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents])
+      thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents], author: params[:author])
       redirect "/t/#{thread.id}"
     end
     post '/del/t/:thread' do |thread|
@@ -33,7 +33,7 @@ module GBoard
       redirect "/t/#{p.thread.id}"
     end
     post '/t/:thread' do |thread|
-      Models::Post.create(thread_id: thread.to_i, contents: params[:contents])
+      Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: params[:author])
       redirect "/t/#{thread}"
     end
   end
