@@ -22,6 +22,16 @@ module GBoard
       thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents])
       redirect "/t/#{thread.id}"
     end
+    post '/del/t/:thread' do |thread|
+      t = Models::Thread.find(id: thread.to_i)
+      t.delete
+      redirect "/b/#{t.board.name}"
+    end
+    post '/del/p/:post' do |post|
+      p = Models::Post.find(id: post.to_i)
+      p.delete
+      redirect "/t/#{p.thread.id}"
+    end
     post '/t/:thread' do |thread|
       Models::Post.create(thread_id: thread.to_i, contents: params[:contents])
       redirect "/t/#{thread}"

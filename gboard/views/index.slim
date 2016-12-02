@@ -6,4 +6,5 @@ html
     ul
       - @boards.each do |board|
         li
-          a href="/b/#{board.name}"= board.name
+          a href="/b/#{board.name}"
+            | /b/#{board.name}

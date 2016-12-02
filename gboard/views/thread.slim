@@ -4,15 +4,20 @@ html
     title Hello World
   body
     h1
-      a href="/b/#{@thread.board.name}" ..
+      a href="/b/#{@thread.board.name}" 
+        | /b/#{@thread.board.name}
     div
       h1= @thread.title
       h2= @thread.posted
       == @thread.md_contents
+      form method="POST" action="/del/t/#{@thread.id}"
+        input type="submit" value="Delete Thread"
     - @thread.posts.sort_by(&:posted).each do |post|
       div
         h2= post.posted
         == post.md_contents
+        form method="POST" action="/del/p/#{post.id}"
+          input type="submit" value="Delete Post"
     form method="POST"
       div
         textarea rows=25 cols=80 name="contents"
