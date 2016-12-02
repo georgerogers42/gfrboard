@@ -8,7 +8,7 @@ html
         | /b/#{@thread.board.name}
     div
       h1= @thread.title
-      h2 #{@thread.posted} &mash; #{@thread.author}
+      h2 #{@thread.posted} &mdash; #{@thread.author}
       == @thread.md_contents
       form method="POST" action="/del/t/#{@thread.id}"
         input type="submit" value="Delete Thread"
