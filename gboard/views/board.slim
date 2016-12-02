@@ -11,7 +11,7 @@ html
     ol
       - @board.threads.sort_by(&:posted).reverse.each do |thread|
         li
-          a href="/t/#{thread.id}" #{thread.title} &mdash; #{thread.posted}
+          a href="/t/#{thread.id}" #{thread.title} &mdash; #{thread.author} &mdash; #{thread.posted}
     form method="POST"
       div
         input type="text" name="title"
