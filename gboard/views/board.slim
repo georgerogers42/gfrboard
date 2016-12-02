@@ -8,7 +8,7 @@ html
     h1 
       a href="/b/#{@board.name}"
         | /b/#{@board.name}
-    ul
+    ol
       - @board.threads.sort_by(&:posted).reverse.each do |thread|
         li
           a href="/t/#{thread.id}" #{thread.title} &mdash; #{thread.posted}
