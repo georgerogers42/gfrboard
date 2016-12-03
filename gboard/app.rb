@@ -30,11 +30,11 @@ module GBoard
     post '/t/:thread' do |thread|
       author = params[:author]
       if author != ""
-        Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: author)
+        post = Models::Post.create(thread_id: thread.to_i, contents: params[:contents], author: author)
       else
-        Models::Post.create(thread_id: thread.to_i, contents: params[:contents], )
+        post = Models::Post.create(thread_id: thread.to_i, contents: params[:contents], )
       end
-      redirect "/t/#{thread.id}", 303
+      redirect "/t/#{thread}", 303
     end
     post '/del/t/:thread' do |thread|
       t = Models::Thread.find(id: thread.to_i)
