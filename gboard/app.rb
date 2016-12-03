@@ -25,7 +25,7 @@ module GBoard
       else
         thread = Models::Thread.create(board_id: board.id, title: params[:title], contents: params[:contents])
       end
-      redirect "/t/#{thread.id}", 302
+      redirect "/t/#{thread.id}", 303
     end
     post '/t/:thread' do |thread|
       author = params[:author]
@@ -34,17 +34,17 @@ module GBoard
       else
         Models::Post.create(thread_id: thread.to_i, contents: params[:contents], )
       end
-      redirect "/t/#{thread.id}"
+      redirect "/t/#{thread.id}", 303
     end
     post '/del/t/:thread' do |thread|
       t = Models::Thread.find(id: thread.to_i)
       t.delete
-      redirect "/b/#{t.board.name}"
+      redirect "/b/#{t.board.name}", 303
     end
     post '/del/p/:post' do |post|
       p = Models::Post.find(id: post.to_i)
       p.delete
-      redirect "/t/#{p.thread.id}"
+      redirect "/t/#{p.thread.id}", 303
     end
   end
 end
