@@ -1,3 +1,4 @@
+require 'rack/auth'
 require_relative 'gboard/app'
 
 mount '/del/' do
