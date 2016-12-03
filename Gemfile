@@ -8,6 +8,7 @@ gem 'sequel'
 gem 'pg'
 gem 'redcarpet'
 gem 'rack-auth'
+gem 'rack-mount'
 
 platform :mri do
   gem 'thin'
