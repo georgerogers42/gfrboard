@@ -7,6 +7,7 @@ gem 'slim'
 gem 'sequel'
 gem 'pg'
 gem 'redcarpet'
+gem 'rack-auth'
 
 platform :mri do
   gem 'thin'
