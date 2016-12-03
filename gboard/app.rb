@@ -36,12 +36,14 @@ module GBoard
       end
       redirect "/t/#{thread}", 303
     end
-    post '/del/t/:thread' do |thread|
+  end
+  class ModApp < Sinatra::Base
+    post '/t/:thread' do |thread|
       t = Models::Thread.find(id: thread.to_i)
       t.delete
       redirect "/b/#{t.board.name}", 303
     end
-    post '/del/p/:post' do |post|
+    post '/p/:post' do |post|
       p = Models::Post.find(id: post.to_i)
       p.delete
       redirect "/t/#{p.thread.id}", 303
