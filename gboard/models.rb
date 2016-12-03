@@ -12,10 +12,10 @@ module GBoard
     class Moderator < Sequel::Model
       def password=(s)
         self.salt = SecureRandom.base64()
-        self.password = Digest::Sha512.new.hexencode(salt + s)
+        super Digest::SHA256.hexdigest (salt + s)
       end
       def correct_password?(s)
-        Digest::Sha512.new.hexencode(salt + s) == Digest::Sha512.new.hexencode(salt + password)
+        Digest::SHA256.hexdigest(salt + s) == password
       end
     end
     class Board < Sequel::Model
